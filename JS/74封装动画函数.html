@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="animation.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				background: black;
+				left: 0;
+				top: 0;
+				position: absolute;
+				opacity: 1;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			var div = document.getElementsByTagName("div")[0];
+			animate(div,{
+				width:200,
+				left:500,
+				opacity:20
+			});
+		</script>
+	</body>
+</html>

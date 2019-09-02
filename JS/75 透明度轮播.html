@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			ul {
+				list-style: none;
+			}
+
+			.slider {
+				width: 590px;
+				height: 470px;
+				border: 5px solid #000000;
+				position: relative;
+			}
+
+			.slider .list .item {
+				position: absolute;
+				left: 0px;
+				top: 0px opacity: 0;
+			}
+
+			.slider .list .item:first-of-type {
+				opacity: 1;
+			}
+
+			.slider .list .item img {
+				width: 590px;
+				height: 470px;
+				display: block;
+			}
+
+			.slider .next,
+			.slider .prev {
+				position: absolute;
+				top: 230px;
+			}
+
+			.slider .next {
+				right: 0;
+			}
+
+			.slider .pagination {
+				position: relative;
+				top: 300px;
+			}
+
+			.slider .pagination .bullet {
+				width: 20px;
+				height: 20px;
+				background: white;
+				margin-left: 5px;
+				float: left;
+				border: 2px solid black;
+				border-radius: 50%;
+				cursor: pointer;
+				line-height: 20px;
+				text-align: center;
+			}
+
+			.slider .pagination .bullet.focus {
+				background: #0000FF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slider">
+			<ul class="list">
+				<li class="item"><img src="./imgs/img1" alt=""></li>
+				<li class="item"><img src="./imgs/img2" alt=""></li>
+				<li class="item"><img src="./imgs/img3" alt=""></li>
+				<li class="item"><img src="./imgs/img4" alt=""></li>
+			</ul>
+			<button class="prev">prev</button>
+			<button class="next">next</button>
+			<ul class="pagination">
+				<li class="bullet focus">1</li>
+				<li class="bullet">2</li>
+				<li class="bullet">3</li>
+				<li class="bullet">4</li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="animation.js"></script>
+		<script type="text/javascript">
+			(function() {
+					var prevIndex, nextIndex;
+					var len;
+					var id;
+					init();
+
+					function init() {
+						prevIndex = nextIndex = 0;
+						len = document.querySelectorAll('.list .item').length;
+						document.querySelector('.prev').onclick = function() {
+							slidePrev();
+						}
+						document.querySelector('.next').onclick = function() {
+							slideNext();
+						}
+						var bullets = document.querySelectorAll('.slider .pagination .bullet');
+						for (var i = 0; i < bullets.length; i++) {
+							bullets[i].index = i;
+							bullets[i].onclick = function() {
+								prevIndex = nextIndex;
+								nextIndex = this.index;
+								slideTo(prevIndex, nextIndex);
+							}
+						}
+						var slider = document.querySelector(".slider");
+						slider.onmouseover = function(){
+							stop();
+						}
+						slider.onmouseout = function(){
+							auto();
+						}
+						auto();
+					}
+
+					function slideNext() {
+						prevIndex = nextIndex;
+						nextIndex++;
+						if (nextIndex === len) {
+							nextIndex = 0;
+						}
+						slideTo(prevIndex, nextIndex);
+					}
+
+					function slidePrev() {
+						prevIndex = nextIndex;
+						nextIndex--;
+						if (nextIndex === -1) {
+							nextIndex = len - 1;
+						}
+						slideTo(prevIndex, nextIndex);
+
+					}
+
+					function slideTo(prev, next) {
+						var bullets = document.querySelectorAll('.slider .pagination .bullet');
+						var Lis = document.querySelectorAll('.list .item');
+						bullets[prev].className = "bullet";
+						bullets[next].className = "bullet focus"
+						animate(Lis[prev], {
+							opacity: 0
+						});
+						animate(Lis[next], {
+							opacity: 100
+						});
+					}
+
+				function auto(){
+					clearInterval(id);
+					id = setInterval(function() {
+						slideNext();
+					}, 2000)}
+		        function stop(){
+					clearInterval(id);
+				}
+				})()
+		</script>
+	</body>
+</html>
