@@ -1,0 +1,38 @@
+.jumbotron {
+	background: ivory;
+	margin-top: 1.875rem;
+}
+
+.jumbotron p {
+	font-size: 2rem;
+}
+
+.carousel-inner img {
+	width: 100%;
+	height: auto;
+}
+
+#intrduce img {
+	width: 140px;
+	height: 140px;
+}
+
+#name p {
+	font-size: 1.5rem
+}
+
+#navs {
+	background-color: ivory
+}
+
+#vid {
+	width: 70%;
+	height: 70%;
+
+}
+
+#buy img {
+	width: 250px;
+	height: 250px;
+}
+

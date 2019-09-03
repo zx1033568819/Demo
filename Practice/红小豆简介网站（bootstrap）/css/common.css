@@ -1,0 +1,88 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+body {
+	font-family: arial;
+}
+main .container{
+	background-image: url(../img/bg.gif);
+	width: 80%;
+}
+.top{width: 93.75rem; margin: 0 auto;position: relative;}
+
+
+.l {
+	float: left;
+}
+
+.r {
+	float: right;
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+
+header {
+	height: 5.0625rem;
+}
+
+
+header .head_logo {
+	width: 8.75rem;
+	height: 3.5rem;
+	margin-top: 0.78125rem;
+}
+
+header .head_menu {
+	font-size: 1.0625rem;
+}
+
+header .head_menu li {
+	float: left;
+	line-height: 5.0625rem;
+	margin-left: 3.25rem;
+}
+
+header .head_menu li a {
+	text-decoration: none;
+	color: rgb(255,88,87);
+}
+
+
+footer .container {
+	width: 80%;
+	height: 7.5rem;
+}
+footer .container p{
+	line-height: 5rem;
+	font-size: 0.75rem;
+	color: #000000;
+	text-align: center;
+}
+
+footer .container  a {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+footer .container img{
+	width: 2.5rem;
+	height:2.5rem;
+}
+#foot{
+	text-align: center;
+}
+#foot div{
+	margin-bottom: 1.25rem;
+}
